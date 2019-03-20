@@ -63,3 +63,45 @@ export function removeOneArticle(id) {
   })
 }
 
+export function getOneArticle(id) {
+  return request({
+    url: '/api/getOneArticle',
+    method: 'get',
+    params: {id},
+    headers:{
+      "token":getToken()+'-'+'getOneArticle'
+    }
+  })
+}
+export function createArticle(param) {
+  return request({
+    url: '/api/createArticle',
+    method: 'post',
+    data: param,
+    headers:{
+      "token":getToken()+'-'+'createArticle'
+    }
+  })
+}
+
+export function editArticle(param) {
+  return request({
+    url: '/api/editArticle',
+    method: 'post',
+    data: param,
+    headers:{
+      "token":getToken()+'-'+'editArticle'
+    }
+  })
+}
+
+export function getClassify() {
+  return request({
+    url: '/api/getClassify',
+    method: 'get',
+    headers:{
+      "token":getToken()+'-'+'getClassify'
+    }
+  })
+}
+        

@@ -6,7 +6,7 @@ import NotFound from '../views/NotFound'
 
 import ArticleCreate from '../views/admin/ArticleCreate'
 import ArticleList from '../views/admin/ArticleList'
-//import ArticleEdit from '../views/admin/ArticleEdit'
+import ArticleEdit from '../views/admin/ArticleEdit'
 //import ClassList from '../views/admin/ClassList'
 
 
@@ -58,9 +58,9 @@ export const asyncRouterMap = [
        // 创建文章单独一个组件
        path:'articleCreate',component:ArticleCreate,name:'创建文章',hidden:true
       },
-      //{
-      //  path:'articleEdit/:postId',component:ArticleEdit,hidden:true,name:"编辑文章"
-      //},
+      {
+       path:'articleEdit/:postId',component:ArticleEdit,hidden:true,name:"编辑文章"
+      },
       //{
       //  path:'classList',component:ClassList,name:'分类管理'
       //  // 创建分类直接在分类列表里面出现弹层
