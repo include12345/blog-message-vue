@@ -11,7 +11,7 @@
           <el-col :span="10" :push="3">
             <el-form-item label="所属分类" label-width="90px" prop="classify">
               <el-select v-model="article.classify" placeholder="请选择分类">
-                <el-option v-for="item in classifyList" :label="item.classify" :value="item.classify"></el-option>
+                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classify" :value="item.classify"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
