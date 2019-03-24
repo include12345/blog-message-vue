@@ -39,11 +39,11 @@ export function logout(token) {
 
 export function getArticleList(form) {
   return request({
-    url: '/api/getArticleList',
+    url: '/blog/listBlog',
     method: 'post',
     data: {
       "page":form.page,
-      "limit":form.limit
+      "pageSize":form.limit
     },
     headers:{
       "token":getToken()+'-'+'getArticleList'
@@ -54,7 +54,7 @@ export function getArticleList(form) {
 
 export function removeOneArticle(id) {
   return request({
-    url: '/api/removeOneArticle',
+    url: '/blog/deleteBlog',
     method: 'get',
     params: {id},
     headers:{
@@ -65,7 +65,7 @@ export function removeOneArticle(id) {
 
 export function getOneArticle(id) {
   return request({
-    url: '/api/getOneArticle',
+    url: '/blog/getBlog',
     method: 'get',
     params: {id},
     headers:{
@@ -75,7 +75,7 @@ export function getOneArticle(id) {
 }
 export function createArticle(param) {
   return request({
-    url: '/api/createArticle',
+    url: '/blog/createBlog',
     method: 'post',
     data: param,
     headers:{
@@ -86,7 +86,7 @@ export function createArticle(param) {
 
 export function editArticle(param) {
   return request({
-    url: '/api/editArticle',
+    url: '/blog/updateBlog',
     method: 'post',
     data: param,
     headers:{

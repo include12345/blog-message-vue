@@ -40,8 +40,8 @@
     import marked from 'marked';
     import hlj from 'highlight.js'
     import 'highlight.js/styles/atom-one-dark.css'
-    // import NProgress from 'NProgress'
-    // import 'nprogress/nprogress.css'
+    import NProgress from 'NProgress'
+    import 'nprogress/nprogress.css'
 
     export default {
         data() {
@@ -79,11 +79,24 @@
         },
         methods: {
             editArticle() {
-                this.$refs.articleCreate.validate(valid => {
-                    if (valid) {
-    
-                    }
+                var article = {
+                    id: this.id,
+                    title: this.title,
+                    classify: this.classify,
+                    content: this.content
+                }
+                editArticle(article).then(response => {
+                    this.article.id = response.id
+                    this.article.classify = response.classify
+                    this.article.title = response.title
+                    this.article.content = response.content
                 })
+                // this.$refs.articleCreate.validate(valid => {
+                //     console.log(valid)
+                //     if (valid) {
+    
+                //     }
+                // })
             },
             initial() {
                 this.listLoading = true
@@ -92,18 +105,16 @@
                     NProgress.done();
                     this.listLoading = false
                     getOneArticle(this.$route.params.postId).then(response => {
-                            if (code == 200) {
-                                this.article.id = _id
-                                this.article.classify = classify
-                                this.article.title = title
-                                this.article.content = content
-                            }
+                                this.article.id = response.id
+                                this.article.classify = response.classify
+                                this.article.title = response.title
+                                this.article.content = response.content
                         })
-                    getClassify().then(response => {
-                            if (code == 200) {
-                                this.classifyList = lists
-                            }
-                        })
+                    // getClassify().then(response => {
+                    //         if (code == 200) {
+                    //             this.classifyList = lists
+                    //         }
+                    //     })
                 }, 500)
     
             },

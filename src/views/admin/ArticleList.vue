@@ -9,15 +9,15 @@
       <el-col :span="24">
         <el-table style="width:100%" align="center" :data="articleLists" v-loading="listLoading" element-loading-text="拼命加载中">
           <el-table-column type="index" width="60"></el-table-column>
-          <el-table-column prop="created_at" min-width="200" label="创建时间"></el-table-column>
+          <el-table-column prop="ctime" min-width="200" label="创建时间"></el-table-column>
           <el-table-column prop="classify" min-width="150" label="所属分类"></el-table-column>
           <el-table-column  prop="title" min-width="180" label="文章标题" ></el-table-column>
           <el-table-column  min-width="180" label="操作" >
             <template slot-scope='scope'>
               <!--这里点击查看进入具体页面但是路径中必须带有admin,这时具体页面里会出现评论的删除选项  -->
-              <el-button size="small" @click="read(scope.row._id)">查看</el-button>
-              <el-button size="small" type='primary' @click="editArticle(scope.row._id)">编辑</el-button>
-              <el-button size="small" type='danger' @click="remove(scope.row._id)">删除</el-button>
+              <el-button size="small" @click="read(scope.row.id)">查看</el-button>
+              <el-button size="small" type='primary' @click="editArticle(scope.row.id)">编辑</el-button>
+              <el-button size="small" type='danger' @click="remove(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -41,7 +41,7 @@ export default {
   name: 'ArticleList',
   data() {
     return {
-      articleLists: [{"created_at":"test","classify":"test","title":"test"}],
+      articleLists: [{"ctime":"test","classify":"test","title":"test"}],
       pageParam: 1,
       pageSize: 10,
       page: 1,
@@ -59,7 +59,7 @@ export default {
     getLists(json) {
       getArticleList(json).then(response => {
         console.log(response);
-        if (!response.result_map || response.result_map.length == 0) {
+        if (!response || response.length == 0) {
           this.$message({
             message: '结果为空',
             type: 'warning',
@@ -68,7 +68,7 @@ export default {
           return;
         }
         this.sizeCount = response.count;
-        this.articleLists = response.result_map;
+        this.articleLists = response.articleList;
       }).catch(error => {
         console.log(error)
         this.$message({
