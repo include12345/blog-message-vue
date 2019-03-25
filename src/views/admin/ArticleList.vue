@@ -9,8 +9,8 @@
       <el-col :span="24">
         <el-table style="width:100%" align="center" :data="articleLists" v-loading="listLoading" element-loading-text="拼命加载中">
           <el-table-column type="index" width="60"></el-table-column>
-          <el-table-column prop="ctime" min-width="200" label="创建时间"></el-table-column>
-          <el-table-column prop="classify" min-width="150" label="所属分类"></el-table-column>
+          <el-table-column prop="timeStart" min-width="200" label="创建时间"></el-table-column>
+          <el-table-column prop="classifyName" min-width="150" label="所属分类"></el-table-column>
           <el-table-column  prop="title" min-width="180" label="文章标题" ></el-table-column>
           <el-table-column  min-width="180" label="操作" >
             <template slot-scope='scope'>
@@ -37,11 +37,13 @@
 
 <script>
 import {getArticleList, removeOneArticle} from '@/api/api'
+import NProgress from 'NProgress'
+import 'nprogress/nprogress.css'
 export default {
   name: 'ArticleList',
   data() {
     return {
-      articleLists: [{"ctime":"test","classify":"test","title":"test"}],
+      articleLists: [{"timeStart":"test","classifyName":"test","title":"test"}],
       pageParam: 1,
       pageSize: 10,
       page: 1,
@@ -97,7 +99,7 @@ export default {
         .then(()=>{
           this.listLoading = true;
           NProgress.start();
-          removeOneArticle({id})
+          removeOneArticle(id)
             .then(()=>{
               this.listLoading = false
               NProgress.done()

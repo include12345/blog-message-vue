@@ -97,7 +97,7 @@ export function editArticle(param) {
 
 export function getClassify() {
   return request({
-    url: '/api/getClassify',
+    url: '/blog/getClassify',
     method: 'get',
     headers:{
       "token":getToken()+'-'+'getClassify'

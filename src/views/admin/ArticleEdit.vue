@@ -10,8 +10,8 @@
                     </el-col>
                     <el-col :span="10" :push="3">
                         <el-form-item label="所属分类" label-width="90px" prop="classify">
-                            <el-select v-model="article.classify" placeholder="请选择分类">
-                                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classify" :value="item.classify"></el-option>
+                            <el-select v-model="article.classifyName" placeholder="请选择分类">
+                                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classifyName" :value="item.classifyName"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
@@ -49,14 +49,14 @@
                 article: {
                     id: '',
                     title: '',
-                    classify: '',
+                    classifyName: '',
                     content: ''
                 },
                 classifyList: [],
                 createRules: {
                     title: [{required: true, message: '请填写标题', trigger: 'blur'}],
                     content: [{required: true, message: '请输入内容', trigger: 'blur'}],
-                    classify: [{
+                    classifyName: [{
                         required: true,
                         message: '请选择分类',
                         trigger: 'change'
@@ -79,15 +79,15 @@
         },
         methods: {
             editArticle() {
-                var article = {
-                    id: this.id,
-                    title: this.title,
-                    classify: this.classify,
-                    content: this.content
+                var articleMap = {
+                    id: this.article.id,
+                    title: this.article.title,
+                    classifyName: this.article.classifyName,
+                    content: this.article.content
                 }
-                editArticle(article).then(response => {
+                editArticle(articleMap).then(response => {
                     this.article.id = response.id
-                    this.article.classify = response.classify
+                    this.article.classifyName = response.classifyName
                     this.article.title = response.title
                     this.article.content = response.content
                 })
@@ -106,15 +106,13 @@
                     this.listLoading = false
                     getOneArticle(this.$route.params.postId).then(response => {
                                 this.article.id = response.id
-                                this.article.classify = response.classify
+                                this.article.classifyName = response.classifyName
                                 this.article.title = response.title
                                 this.article.content = response.content
                         })
-                    // getClassify().then(response => {
-                    //         if (code == 200) {
-                    //             this.classifyList = lists
-                    //         }
-                    //     })
+                    getClassify().then(response => {
+                                this.classifyList = response
+                        })
                 }, 500)
     
             },

@@ -10,8 +10,8 @@
           </el-col>
           <el-col :span="10" :push="3">
             <el-form-item label="所属分类" label-width="90px" prop="classify">
-              <el-select v-model="article.classify" placeholder="请选择分类">
-                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classify" :value="item.classify"></el-option>
+              <el-select v-model="article.classifyName" placeholder="请选择分类">
+                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classifyName" :value="item.classifyName"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       article: {
-        classify:'', //文章所属分类
+        classifyName:'', //文章所属分类
         title: '', //文章标题
         content: '' //文章内容
       },
@@ -68,10 +68,16 @@ export default {
   },
   methods: {
     createArticle() {
-      this.$refs.articleCreate.validate(valid=>{
-        if (valid) {
-          
-        }
+      var articleMap = {
+          title: this.article.title,
+          classifyName: this.article.classifyName,
+          content: this.article.content
+      }
+      createArticle(articleMap).then(response => {
+          this.article.id = response.id
+          this.article.classifyName = response.classifyName
+          this.article.title = response.title
+          this.article.content = response.content
       })
     }
   },
