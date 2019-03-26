@@ -6,7 +6,7 @@ export function login(username, password) {
   const salt = '78683a7a-f258-11e5-ab7f-00163e0043c9';
   password = md5(password+salt);
   return request({
-    url: '/user/api',
+    url: '/user/login',
     method: 'post',
     data: {
       username,

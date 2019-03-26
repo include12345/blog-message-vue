@@ -38,7 +38,7 @@
 <script>
 import {getArticleList, removeOneArticle} from '@/api/api'
 import NProgress from 'NProgress'
-import 'nprogress/nprogress.css'
+// import 'nprogress/nprogress.css'
 export default {
   name: 'ArticleList',
   data() {

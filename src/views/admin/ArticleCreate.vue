@@ -11,7 +11,7 @@
           <el-col :span="10" :push="3">
             <el-form-item label="所属分类" label-width="90px" prop="classify">
               <el-select v-model="article.classifyName" placeholder="请选择分类">
-                <el-option v-for="(item, index) in classifyList" :key="index" :label="item.classifyName" :value="item.classifyName"></el-option>
+                <el-option v-for="index in classifyList" :key="index" :label="index" :value="index"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -30,7 +30,7 @@
         </el-row>
         <el-form-item style="padding: 20px 20px 0 0">
           <el-button type="primary" style="float:right" size="small" @click="createArticle" :loading="load">{{btnText}}</el-button>
-          <el-button style="float:right;margin-right: 10px" size="small" @click="cancel" :loading="load">取消</el-button>
+          <el-button style="float:right;margin-right: 10px" size="small" @click="cancle" :loading="load">取消</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import {getArticleList, removeOneArticle} from '@/api/api'
+import {createArticle, getClassify} from '@/api/api'
 import marked from 'marked';
 import hlj from 'highlight.js'
 import  'highlight.js/styles/atom-one-dark.css'
@@ -79,8 +79,13 @@ export default {
           this.article.title = response.title
           this.article.content = response.content
       })
+    },
+    // 取消
+    cancle(){
+      this.$router.push({path:'/admin/articleList'});
     }
   },
+   
   computed:{
     markedToHtml(){
       marked.setOptions({
@@ -91,6 +96,11 @@ export default {
       // console.log(this.article.content);
       return marked(this.article.content);
     }
+  },
+  mounted(){
+      getClassify().then(response => {
+            this.classifyList = response
+        })
   }
 }
 </script>

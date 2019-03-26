@@ -71,9 +71,9 @@ export default {
         })
       })
     },
-    //toReg(){
-    //  this.$router.push({path:'/reg'})
-    //}
+    toReg(){
+     this.$router.push({path:'/reg'})
+    }
   }
 }
 </script>
