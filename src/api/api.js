@@ -54,11 +54,11 @@ export function getArticleList(form) {
 
 export function removeOneArticle(id) {
   return request({
-    url: '/blog/deleteBlog',
+    url: '/api/blog/deleteBlog',
     method: 'get',
     params: {id},
     headers:{
-      "token":getToken()+'-'+'removeOneArticle'
+      "token":getToken()+'-'+'deleteBlog'
     }
   })
 }
@@ -75,22 +75,22 @@ export function getOneArticle(id) {
 }
 export function createArticle(param) {
   return request({
-    url: '/blog/createBlog',
+    url: '/api/blog/createBlog',
     method: 'post',
     data: param,
     headers:{
-      "token":getToken()+'-'+'createArticle'
+      "token":getToken()+'-'+'createBlog'
     }
   })
 }
 
 export function editArticle(param) {
   return request({
-    url: '/blog/updateBlog',
+    url: '/api/blog/updateBlog',
     method: 'post',
     data: param,
     headers:{
-      "token":getToken()+'-'+'editArticle'
+      "token":getToken()+'-'+'updateBlog'
     }
   })
 }

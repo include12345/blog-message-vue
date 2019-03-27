@@ -21,7 +21,7 @@ const premission = {
       return new Promise(resolve => {
         let childrenRouterList = []
         var resList = []
-        resList = resList.concat(response.list);
+        resList = resList.concat(response);
         for (var n = 0; n < asyncRouterMap.length; n++) {
          let routerMap = {}
          routerMap.path = asyncRouterMap[n].path
@@ -36,7 +36,7 @@ const premission = {
            children.push(asyncRouterMap[n].children[j])
            //后台控制界面代码
           //  for (var i = 0; i < resList.length; i++) {
-          //    if (asyncRouterMap[n].children[j].path === resList[i][0]) {
+          //    if (asyncRouterMap[n].children[j].path === resList[i].name) {
           //      children.push(asyncRouterMap[n].children[j])
           //    }
           //  }
