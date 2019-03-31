@@ -14,6 +14,9 @@ const premission = {
     SET_ROUTERS: (state, routers) => {
       state.addRouters = routers
       state.routers = constantRouterMap.concat(routers)
+    },
+    HEAD_LINE: (state,headline) =>{
+      state.headline  = headline
     }
   },
   actions: {
@@ -50,6 +53,9 @@ const premission = {
         commit('SET_ROUTERS', childrenRouterList)
         resolve()
       })
+    },
+    changeHeadLine({commit},headline){
+      commit('HEAD_LINE', headline)
     }
   }
 }

@@ -8,6 +8,9 @@ import 'normalize.css/normalize.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+import VueParticles from 'vue-particles'  
 import router from './router'
 import store from './store'
 
@@ -15,6 +18,8 @@ import '@/permission'
 
 Vue.use(ElementUI)
 Vue.use(VueClipboard)
+Vue.use(mavonEditor);
+Vue.use(VueParticles)
 
 Vue.config.productionTip = false
 

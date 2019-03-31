@@ -9,7 +9,9 @@ import ArticleList from '../views/admin/ArticleList'
 import ArticleEdit from '../views/admin/ArticleEdit'
 //import ClassList from '../views/admin/ClassList'
 
-
+import Front from '../views/show/Front'
+import Home from '../views/show/Home'
+// import Header from '../views/show/Header'
 
 import Layout from '../views/layout/Layout'
 
@@ -19,12 +21,14 @@ Vue.use(Router)
 export const constantRouterMap = [
   {path: '/login', component: Login, hidden: true},
   {
-    path: '/',
-    component: Layout,
-    redirect: 'dashboard',
-    name: '根目录',
-    hidden: true,
-    children: [{path: 'dashboard', component: Dashboard}]
+    path:'/',
+    component:Front,//这是文章页
+    hidden:true,
+    children:[
+      {path:'',redirect:'home',  meta:{auth:false}},
+      {path:'home',component:Home,  meta:{auth:false}},
+      // {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
+    ]
   },
   {
     path: '/admin',
@@ -47,6 +51,21 @@ export default new Router({
 
 
 export const asyncRouterMap = [
+  {
+    path:'/home',
+    component:Front,
+    redirect:'home',
+    name:'管理面板',
+    children:[
+      {path:'',redirect:'home',  meta:{auth:false}},
+      {path:'home',component:Home,  meta:{auth:false}},
+      // {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
+      //{
+      //  path:'classList',component:ClassList,name:'分类管理'
+      //  // 创建分类直接在分类列表里面出现弹层
+      //}
+    ]
+  },
   {
     path:'/admin',
     component:Layout,

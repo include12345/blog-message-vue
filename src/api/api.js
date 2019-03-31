@@ -43,7 +43,7 @@ export function getArticleList(form) {
     method: 'post',
     data: {
       "page":form.page,
-      "pageSize":form.limit
+      "pageSize":form.pageSize
     },
     headers:{
       "token":getToken()+'-'+'getArticleList'

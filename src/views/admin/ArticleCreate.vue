@@ -17,16 +17,7 @@
           </el-col>
         </el-row>
         <el-row style="margin-top:20px">
-          <el-col :span="12">
-            <!-- 编辑区 -->
-            <el-form-item class="show" prop="content">
-              <el-input type="textarea" v-model="article.content" :rows="25" placeholder="请在此处编辑文章"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <!-- 展示区 -->
-            <div style="backgroup:#fff;margin:0 0 0 20px;height:526px;overflow-y: auto;" v-html="markedToHtml" class="article"></div>
-          </el-col>
+         <mavon-editor v-model="article.content"/>
         </el-row>
         <el-form-item style="padding: 20px 20px 0 0">
           <el-button type="primary" style="float:right" size="small" @click="createArticle" :loading="load">{{btnText}}</el-button>
@@ -39,7 +30,6 @@
 
 <script>
 import {createArticle, getClassify} from '@/api/api'
-import marked from 'marked';
 import hlj from 'highlight.js'
 import  'highlight.js/styles/atom-one-dark.css'
 export default {
@@ -87,15 +77,7 @@ export default {
   },
    
   computed:{
-    markedToHtml(){
-      marked.setOptions({
-        highlight: function (code) {
-        return hlj.highlightAuto(code).value;
-        }
-      });
-      // console.log(this.article.content);
-      return marked(this.article.content);
-    }
+  
   },
   mounted(){
       getClassify().then(response => {

@@ -17,14 +17,7 @@
                     </el-col>
                 </el-row>
                 <el-row style="margin-top:20px">
-                    <el-col :span="12">
-                        <el-form-item class="show" prop="content">
-                            <el-input type="textarea" v-model="article.content" :rows="25" placeholder="请在此处编辑文章"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                        <div style="background:#fff;margin:0 0 0 20px;height:526px;overflow-y:auto;" v-html="markedToHtml" class="article"></div>
-                    </el-col>
+                    <mavon-editor :ishljs = "true" v-model="article.content"/>
                 </el-row>
                 <el-form-item style="padding:20px 20px 0 0">
                     <el-button type="primary" style="float:right" size="small" @click="editArticle" :loading="load">{{btnText}}</el-button>
@@ -90,12 +83,6 @@
                     this.article.title = response.title
                     this.article.content = response.content
                 })
-                // this.$refs.articleCreate.validate(valid => {
-                //     console.log(valid)
-                //     if (valid) {
-    
-                //     }
-                // })
             },
             initial() {
                 this.listLoading = true
@@ -121,14 +108,6 @@
             }
         },
         computed: {
-            markedToHtml() {
-                marked.setOptions({
-                    highlight: function(code) {
-                        return hlj.highlightAuto(code).value;
-                    }
-                });
-                return marked(this.article.content);
-            }
         },
         mounted() {
             this.initial()
