@@ -9,9 +9,9 @@
                     <p class="article_creatAt">{{item.createAuthor}}</p>
                 </div>
             </header>
-            <section v-html="item.content" class="article_main"></section>
+            <!-- <section v-html="item.content" class="article_main"></section> -->
             <footer>
-                <router-link class="article_readMore" :to="{path:`/article/${item.id}`}">阅读全文</router-link>
+                <router-link class="article_readMore" :to="{path:`/home/article/${item.id}`}">阅读全文</router-link>
             </footer>
         </article>
         <footer class='loadMore' v-if='loadMoreShow'>
@@ -22,8 +22,9 @@
 
 <script>
 import {getArticleList} from '@/api/api'
+// import marked from 'marked';
 export default {
-    name: "Home",
+    name: "home",
     data() {
         return {
             items:[],
@@ -61,6 +62,7 @@ export default {
                     return;
                 }
                 setTimeout(()=>{
+                    // marked(response.articleList.content || '')
                     this.items = this.items.concat(response.articleList)
                     this.listLoading=false
                     if(page * limit < response.articleCount) {
@@ -95,8 +97,10 @@ h2,h4{
     margin:0;
 }
 .home_wrapper{
+    z-index: 100000;
   margin:auto;
   list-style: none;
+  cursor: pointer;
 }
 .home_wrapper article{
   padding-bottom: 1rem;

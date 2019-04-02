@@ -1,8 +1,17 @@
 <template lang="html">
     <header>
          <div class="bg">
-         <vue-particles
-        color="#FFFF00"
+         
+         </div>
+         
+       <nav>
+            <ul>
+                <li><router-link to="/Home">主页</router-link></li>
+            </ul>
+        </nav>
+        <div>
+            <vue-particles
+        color="#FFFFE0"
         :particleOpacity="0.7"
         :particlesNumber="60"
         shapeType="circle"
@@ -20,18 +29,12 @@
         class="lizi"
       >
       </vue-particles>
-         </div>
-       <nav>
-            <ul>
-                <li><router-link to="/Home">主页</router-link></li>
-            </ul>
-        </nav>
+        </div>
         <section class="home_title">
             <transition name='fade'>
                 <h1 v-if="show_headline">{{finalheadline}}</h1>
             </transition>
         </section>  
-             
     </header>
 </template>
 

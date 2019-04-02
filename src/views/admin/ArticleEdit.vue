@@ -30,7 +30,6 @@
 
 <script>
     import {getOneArticle,editArticle,getClassify} from '@/api/api'
-    import marked from 'marked';
     import hlj from 'highlight.js'
     import 'highlight.js/styles/atom-one-dark.css'
     import NProgress from 'NProgress'
