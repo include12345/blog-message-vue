@@ -8,6 +8,7 @@
 <script>
 import vhead from './Header'
 export default {
+  name: "show",
     components:{
         vhead
     }

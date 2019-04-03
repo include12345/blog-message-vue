@@ -1,15 +1,18 @@
 import router from './router'
 import store from './store'
 import NProgress from 'nprogress' //  进度条
-// import 'nprogress/nprogress.css'
 import {getToken} from './utils/auth' //校验
 
 const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
   NProgress.start()
+  if(to.path.concat('show')) {
+    next()
+    return
+  }
   if (getToken()) {
     if (to.path === '/login') {
-      next({ path: '/' })
+      next({ path: '/admin' })
       NProgress.done()
     } else {
       if (store.getters.addRouters.length === 0) {  // 判断当前用户是否已拉取完user_info信息
@@ -25,7 +28,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+    if (whiteList.indexOf(to.path) !== -1 ) { // 在免登录白名单，直接进入
       next()
     } else {
       next('/login') // 否则全部重定向到登录页

@@ -37,8 +37,7 @@
 
 <script>
 import {getArticleList, removeOneArticle} from '@/api/api'
-import NProgress from 'NProgress'
-// import 'nprogress/nprogress.css'
+// import NProgress from 'NProgress'
 export default {
   name: 'ArticleList',
   data() {
@@ -88,7 +87,7 @@ export default {
       this.getLists(json)
     },
     read(id) {
-      this.$router.push({path: `/article/${id}`})
+      this.$router.push({path: `/show/article/${id}`})
     },
     remove(id) {
       this.$confirm('确认要删除吗?','提醒',{
@@ -98,11 +97,9 @@ export default {
         })
         .then(()=>{
           this.listLoading = true;
-          NProgress.start();
           removeOneArticle(id)
             .then(()=>{
               this.listLoading = false
-              NProgress.done()
               this.$notify({
                 title:'成功',
                 message:"删除成功",

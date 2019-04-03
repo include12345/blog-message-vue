@@ -4,7 +4,6 @@
             <div class="home_title">{{title}}</div>
             <div><p class="home_createAt">{{createAuthor}}</p></div>
         </header>
-        <!-- <mavon-editor v-html="value" :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" /> -->
         <section v-html="content" class="home_main"></section>
     </article>
 </template>
@@ -12,7 +11,7 @@
  import {getOneArticle} from '@/api/api'
  import marked from 'marked';
 export default {
-    name: "article",
+    // name: "article",
     data() {
         return {
             title:'',
@@ -39,6 +38,10 @@ export default {
 article{
     margin:auto;
     z-index: 10000;
+    
+}
+.content {
+   background-color: lightgoldenrodyellow; 
 }
 .home_title{
     font-size:3rem;

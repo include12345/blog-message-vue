@@ -1,15 +1,9 @@
 <template lang="html">
     <header>
-         <div class="bg">
+         <!-- <div class="bg">
          
-         </div>
-         
-       <nav>
-            <ul>
-                <li><router-link to="/Home">主页</router-link></li>
-            </ul>
-        </nav>
-        <div>
+         </div> -->
+          <div>
             <vue-particles
         color="#FFFFE0"
         :particleOpacity="0.7"
@@ -26,10 +20,17 @@
         hoverMode="grab"
         :clickEffect="true"
         clickMode="push"
-        class="lizi"
+        class="bg"
       >
       </vue-particles>
         </div>
+       <nav>
+          <ul>
+              <li style="z-index:10000"><router-link to="/show">主页</router-link></li>
+              <li style="z-index:10000"><router-link to="/login">登录</router-link></li>
+          </ul>
+      </nav>
+     
         <section class="home_title">
             <transition name='fade'>
                 <h1 v-if="show_headline">{{finalheadline}}</h1>
@@ -68,17 +69,17 @@ export default {
     opacity: 0;
   }
   header{
-    height: 30rem;
+    height: 10rem;
     display: flex;
     flex-direction: column;
   }
   .bg{
-    z-index:-1;
+    z-index:10;
     position: absolute;
-    height:20rem;
+    /* height:20rem; */
     width: 100%;
-    left:0;
-    top:0;
+    /* left:0;
+    top:0; */
       /*background-size: cover; 必须放在background-position后面用 "/" 分割*/
     background:  url('../../assets/bg.jpg') no-repeat center /cover;
     /* brightness()给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，
@@ -86,6 +87,7 @@ export default {
     filter: brightness(0.7);
   }
   nav ul{
+    z-index: 10000;
     display: flex;
     display: -webkit-flex;
     -webkit-justify-content:flex-end;
@@ -94,10 +96,11 @@ export default {
     list-style: none;
   }
   nav a {
+    z-index:10000;
     font-size:1.6rem;
     display: block;
     padding: 1.2rem 1.8rem;
-    color:#0000FF;
+    color:#00ff55;
     opacity: 1;
     transition: opacity 0.3s;
     /*解决iphone下的a标签点击会出现底色*/
@@ -115,7 +118,7 @@ export default {
   .home_title h1{
     margin:auto;
     font-size: 3rem;
-    font-weight: 400;
+    font-weight: 200;
   }
 
   @media screen and (max-width:768px){
@@ -123,12 +126,12 @@ export default {
       font-size: 2.6rem;
     }
     .bg,header{
-      height: 24rem;
+      height: 10rem;
     }
   }
   @media screen and (max-width:480px){
   header,.bg{
-      height: 25rem;
+      height: 10rem;
     }
     nav a{
       font-size:1.6rem;

@@ -3,15 +3,14 @@
         <article v-for='item in items'>
             <header>
                 <div>
-                    <router-link :to="{path:`/article/${item.id}`}" class="article_title">{{item.title}}</router-link>
+                    <router-link :to="{path:`/show/article/${item.id}`}" class="article_title">{{item.title}}</router-link>
                 </div>
                 <div>
                     <p class="article_creatAt">{{item.createAuthor}}</p>
                 </div>
             </header>
-            <!-- <section v-html="item.content" class="article_main"></section> -->
             <footer>
-                <router-link class="article_readMore" :to="{path:`/home/article/${item.id}`}">阅读全文</router-link>
+                <router-link class="article_readMore" :to="{path:`/show/article/${item.id}`}">阅读全文</router-link>
             </footer>
         </article>
         <footer class='loadMore' v-if='loadMoreShow'>
@@ -33,7 +32,7 @@ export default {
             loadMoreText: '加载更多',
             loadMoreShow: false,
             page:1,
-            limit: 2
+            limit: 10
         }
     },
     components: {
@@ -97,32 +96,33 @@ h2,h4{
     margin:0;
 }
 .home_wrapper{
-    z-index: 100000;
+  z-index: 100000;
   margin:auto;
   list-style: none;
   cursor: pointer;
+  background-color: lightgoldenrodyellow;
 }
 .home_wrapper article{
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
   border-bottom:1px solid #d2d2d2;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .article_title{
   display: block;
-  font-size: 2.6rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 600;
   color:#404040;
-  padding:.8rem 0;
+  padding:.4rem 0;
 }
 .article_creatAt{
   font-family: "Comic Sans MS", curslve, sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color:#7f8c8d;
   margin: 0;
 }
 .article_main{
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color:#34495e;
   line-height: 1.6em;
   /*padding:0.6rem 0;*/
@@ -131,7 +131,7 @@ footer{
   text-align: right;
 }
 .article_readMore{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color:#919191;
   font-weight: 600;
 }

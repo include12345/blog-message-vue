@@ -20,7 +20,6 @@ Vue.use(ElementUI)
 Vue.use(VueClipboard)
 Vue.use(mavonEditor);
 Vue.use(VueParticles)
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -32,12 +32,12 @@ export const constantRouterMap = [
     ]
   },
   {
-    path:'/home',
+    path:'/show',
     component:Front,//这是文章页
     hidden:true,
     children:[
-      // {path:'',redirect:'home',  meta:{auth:false}},
-      {path:'',component:Home,  meta:{auth:false}},
+      {path:'', component: Home,  meta:{auth:false}},
+      {path:'home',component:Home,  meta:{auth:false}},
       {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
     ]
   },

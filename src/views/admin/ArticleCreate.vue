@@ -64,10 +64,19 @@ export default {
           content: this.article.content
       }
       createArticle(articleMap).then(response => {
-          this.article.id = response.id
-          this.article.classifyName = response.classifyName
-          this.article.title = response.title
-          this.article.content = response.content
+           this.$message({
+            message: '添加成功',
+            type: 'success',
+            duration: 1000
+            })
+          this.$router.push({path:'/admin/articleList'});
+      }).catch(error => {
+          reject(error)
+          this.$message({
+            message: '添加失败',
+            type: 'error',
+            duration: 1000
+            })
       })
     },
     // 取消

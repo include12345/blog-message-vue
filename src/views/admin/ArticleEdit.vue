@@ -32,7 +32,7 @@
     import {getOneArticle,editArticle,getClassify} from '@/api/api'
     import hlj from 'highlight.js'
     import 'highlight.js/styles/atom-one-dark.css'
-    import NProgress from 'NProgress'
+    // import NProgress from 'NProgress'
 
     export default {
         data() {
@@ -81,13 +81,23 @@
                     this.article.classifyName = response.classifyName
                     this.article.title = response.title
                     this.article.content = response.content
+                    this.$message({
+                        message: '修改成功',
+                        type: 'success',
+                        duration: 1000
+                    })
+                }).catch(error => {
+                    reject(error)
+                    this.$message({
+                        message: '添加失败',
+                        type: 'error',
+                        duration: 1000
+                    })
                 })
             },
             initial() {
                 this.listLoading = true
-                NProgress.start();
                 setTimeout(() => {
-                    NProgress.done();
                     this.listLoading = false
                     getOneArticle(this.$route.params.postId).then(response => {
                                 this.article.id = response.id
