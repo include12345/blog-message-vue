@@ -1,12 +1,12 @@
 {
-  "name": "y",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "y",
-  "author": "y",
+  "description": "blog",
+  "author": "李贺宾 <include_lihebin@163.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server  --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "webpack-dev-server  --progress --config build/webpack.prod.conf.js",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -61,7 +61,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-dev-server": "^3.0.0",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

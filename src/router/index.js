@@ -20,34 +20,47 @@ Vue.use(Router)
 
 export const constantRouterMap = [
   {path: '/login', component: Login, hidden: true},
+  // {
+  //   path:'/dashboard',
+  //   component:Layout,//这是文章页
+  //   redirect: 'dashboard',
+  //   name: '根目录',
+  //   hidden: true,
+  //   children:[
+  //     {path:'',component:Dashboard,  meta:{auth:false}}
+  //     // {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
+  //   ]
+  // },
   {
     path:'/',
-    component:Layout,//这是文章页
-    redirect: 'dashboard',
-    name: '根目录',
-    hidden: true,
-    children:[
-      {path:'dashboard',component:Dashboard,  meta:{auth:false}}
-      // {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
-    ]
-  },
-  {
-    path:'/show',
     component:Front,//这是文章页
     hidden:true,
     children:[
       {path:'', component: Home,  meta:{auth:false}},
-      {path:'home',component:Home,  meta:{auth:false}},
+      // {path:'/home',component:Home,  meta:{auth:false}},
       {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
     ]
   },
   {
-    path: '/admin',
+    path:'/show/',
+    component:Front,//这是文章页
+    hidden:true,
+    children:[
+      {path:'', component: Home,  meta:{auth:false}},
+      // {path:'/home',component:Home,  meta:{auth:false}},
+      {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
+    ]
+  },
+  {
+    path: '/admin/',
     component: Layout,
-    redirect: 'dashboard',
+    redirect: 'admin',
     name: '管理面板',
     hidden: true,
-    children: [{path:'articleList',component:ArticleList,name:'文章管理'}]
+    children: [
+      {path:'',component:Dashboard},
+      // {path:'articleList',component:ArticleList,name:'文章管理'}
+    ]
   },
   {
     path:'*',component: NotFound, hidden:true
@@ -62,25 +75,10 @@ export default new Router({
 
 
 export const asyncRouterMap = [
-  // {
-  //   path:'/home',
-  //   component:Front,
-  //   redirect:'home',
-  //   name:'管理面板',
-  //   children:[
-  //     {path:'',redirect:'home',  meta:{auth:false}},
-  //     {path:'home',component:Home,  meta:{auth:false}},
-  //     // {path:'article/:id',component:Article, meta:{auth:false,scrollToTop: true}},
-  //     //{
-  //     //  path:'classList',component:ClassList,name:'分类管理'
-  //     //  // 创建分类直接在分类列表里面出现弹层
-  //     //}
-  //   ]
-  // },
   {
     path:'/admin',
     component:Layout,
-    redirect:'admin',
+    redirect: 'dashboard',
     name:'管理面板',
     children:[
       { path:'articleList',component:ArticleList,name:'文章管理'},

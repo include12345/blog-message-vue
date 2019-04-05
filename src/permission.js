@@ -3,13 +3,14 @@ import store from './store'
 import NProgress from 'nprogress' //  进度条
 import {getToken} from './utils/auth' //校验
 
-const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if(to.path.concat('show')) {
+  if(to.path === '/' || to.path.indexOf("/show") !== -1) {
     next()
-    return
-  }
+    NProgress.done()
+    return;
+  } 
+  console.log("token:" +getToken())
   if (getToken()) {
     if (to.path === '/login') {
       next({ path: '/admin' })
@@ -20,17 +21,17 @@ router.beforeEach((to, from, next) => {
           store.dispatch('GenerateRoutes',{res}).then(()=>{// 生成可访问的路由表
             router.addRoutes(store.getters.addRouters)// 动态添加可访问路由表
           })
-          next()
-          // next({ ...to })
+        next()
         })
       } else {
         next()
       }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1 ) { // 在免登录白名单，直接进入
+    if(to.path.indexOf("/login") !== -1) {
       next()
     } else {
+      console.log("bai:"+to.path)
       next('/login') // 否则全部重定向到登录页
       NProgress.done() // router在hash模式下 手动改变hash 重定向回来 不会触发afterEach 暂时hack方案 ps：history模式下无问题，可删除该行！
     }

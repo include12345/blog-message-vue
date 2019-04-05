@@ -14,7 +14,7 @@
           更多<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
-        <router-link class='inlineBlock' to="/">
+        <router-link class='inlineBlock' to="/admin">
           <el-dropdown-item>
             主页
           </el-dropdown-item>
