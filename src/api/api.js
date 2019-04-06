@@ -1,4 +1,6 @@
 import request from '@/utils/request'
+import file from '@/utils/file'
+
 import md5 from 'js-md5'
 import {getToken} from '@/utils/auth'
 
@@ -104,4 +106,29 @@ export function getClassify() {
     }
   })
 }
+
+
+export function getFileUploadToken(filename, size) {
+  return request({
+    url: '/file/uploadPictureToken',
+    method: 'get',
+    params: {filename, size},
+    headers:{
+      "token":getToken()+'-'+'uploadPictureToken'
+    }
+  })
+}
+
+export function fileUpload(formData) {
+  return file({
+    url: '/api/alien/upload',
+    method: 'post',
+    data: formData,
+    headers:{
+      "Content-Type":'multipart/form-data'
+    }
+  })
+}
+
+
         
