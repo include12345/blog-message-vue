@@ -27,7 +27,7 @@
        <nav>
           <ul>
               <li style="z-index:10000"><router-link to="/show">主页</router-link></li>
-              <li style="z-index:10000"><router-link to="/login">登录</router-link></li>
+              <li style="z-index:10000"><router-link to="/login">后台</router-link></li>
           </ul>
       </nav>
      

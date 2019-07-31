@@ -120,8 +120,8 @@ export function getFileUploadToken(filename, size) {
 }
 
 export function fileUpload(formData) {
-  return file({
-    url: '/api/alien/upload',
+  return request({
+    url: '/file/uploadPicture',
     method: 'post',
     data: formData,
     headers:{
