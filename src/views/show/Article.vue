@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 article{
     margin:auto;
     z-index: 10000;
@@ -43,6 +43,7 @@ article{
 .content {
    background-color: lightgoldenrodyellow; 
 }
+
 .home_title{
     font-size:3rem;
     font-weight:400;
@@ -61,6 +62,11 @@ article{
   font-size: 1.6rem;
   line-height: 1.6em;
 }
+img {
+  max-width: 100%;
+}
+/* .foo >>> img { max-width: 50%; } */
+
 @media screen and (max-width:786px){
   .home_title{
     font-size: 2.2rem;

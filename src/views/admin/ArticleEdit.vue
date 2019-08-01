@@ -170,4 +170,9 @@
     }
 </script>
 <style lang="css" >
+/* img {
+    max-width: 50% !important;
+    box-sizing: content-box;
+    background-color: #fff;
+} */
 </style>

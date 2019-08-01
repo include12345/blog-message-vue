@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 .fade-enter-active,.fade-leave-active{
       transition: all .4s;
   }
@@ -69,19 +69,19 @@ export default {
     opacity: 0;
   }
   header{
-    height: 10rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
   }
+  
   .bg{
     z-index:10;
     position: absolute;
-    /* height:20rem; */
     width: 100%;
     /* left:0;
     top:0; */
       /*background-size: cover; 必须放在background-position后面用 "/" 分割*/
-    background:  url('../../assets/bg.jpg') no-repeat center /cover;
+    /* background:  url('../../assets/bg.jpg') no-repeat center /cover; */
     /* brightness()给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，
     则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。*/
     filter: brightness(0.7);
@@ -100,7 +100,7 @@ export default {
     font-size:1.6rem;
     display: block;
     padding: 1.2rem 1.8rem;
-    color:#00ff55;
+    color:#0e130f;
     opacity: 1;
     transition: opacity 0.3s;
     /*解决iphone下的a标签点击会出现底色*/
@@ -110,10 +110,9 @@ export default {
   }
   .home_title{
     color: rgb(54, 9, 216);
-    background-color: #FFF68F;
-     display: flex;
-     margin: auto;
-     max-width: 94%;
+    display: flex;
+    margin: auto;
+    max-width: 98%;
   }
   .home_title h1{
     margin:auto;

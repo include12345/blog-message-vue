@@ -30,11 +30,11 @@ export default {
     }
     .content{
       width: 80%;
-      padding:2rem;
+      padding:1rem;
       padding-bottom: 0;
       max-width: 800px;
       flex:1  0 auto;
-      background: #fff;
+      background: lightgoldenrodyellow;
     }
     .fade-enter-active,.fade-leave-active{
       transition: all .3s ;
